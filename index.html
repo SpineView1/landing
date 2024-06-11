@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpineView - Your Spine Mesh Repository</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        /* Custom CSS for SpineView */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .navbar {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-brand i {
+            font-size: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f2f8f8;
+        }
+
+        .hero {
+            background-color: #f9fdfd;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #3129da;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .options {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .option-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 20px 30px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .option-button:last-child {
+            margin-right: 0;
+        }
+
+        .option-button:hover {
+            background-color:#41a73e ;
+        }
+
+        .features {
+            background-color: #fff;
+            padding: 60px 0;
+        }
+
+        .feature {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-text {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-author {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .call-to-action {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #0056b3;
+            border: none;
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background-color: #004599;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .wave-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: -1;
+        }
+        .hero-wave {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.image-container img {
+    max-width: 10%;
+    height: 10%;
+    margin: 0 10px; /* Adjust the margin as needed */
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="spineview.png" alt="Image 2" style="width: 70%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/SpineView1"><img src="25231.png" alt="Image 2" style="width: 10%; margin-left: 61%;"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Welcome to SpineView</h1>
+            <p class="hero-description">Your Ultimate Spine Mesh Repository for Cutting-Edge Research</p>
+            <div class="options">
+                <a href="https://thc.spineview.upf.edu" class="option-button">
+                    <i class="fas fa-spine"></i> Explore Thoracolumbar
+                </a>
+                <a href="https://ivd.spineview.upf.edu" class="option-button">
+                    <i class="fas fa-spine"></i> Discover Intervertebral Disc
+                </a>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="Insilico-World-Consortium-Ist.jpg" style="margin-bottom: 2%;" alt="Image 1">
+            <img src="image.png" alt="Image 2" style="width: 5%;">
+            <img src="Logo_UPF.jpg" alt="Image 3" style="margin-bottom: 1%;> 
+            <img src="marie-curie-actions.jpg" alt="Image 4" style="width: 5%;">
+            <img src="bsc.png" alt="Image 5" style="width: 5%; margin-bottom: 0.5%;">
+        </div>
+    </section>
+    
+ 
+    
+    <!-- Link to Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
