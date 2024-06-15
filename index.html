@@ -3,204 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpineView - Your Spine Mesh Repository</title>
-    <!-- Link to Bootstrap CSS -->
+    <title>SpineView - Your Spine Model Repository</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <style>
-        /* Custom CSS for SpineView */
-        body {
-            font-family: 'Segoe UI', sans-serif;
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif; /* Set Segoe UI as the font for all text */
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            color: #333; /* Ensures text color is consistently set, optional */
         }
-
         .navbar {
             background-color: #007BFF;
             color: #fff;
         }
-
         .navbar-brand {
             font-size: 36px;
             font-weight: bold;
             color: #fff;
         }
-
-        .navbar-brand i {
-            font-size: 40px;
-            margin-right: 10px;
-        }
-
         .navbar-nav .nav-link {
             color: #fff;
             font-size: 18px;
             margin-right: 20px;
         }
-
         .navbar-nav .nav-link:hover {
             color: #f2f8f8;
         }
-
         .hero {
             background-color: #f9fdfd;
-            height: 600px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-content {
+            padding: 2% 0;
             text-align: center;
             color: #3129da;
         }
-
         .hero-title {
             font-size: 48px;
             font-weight: bold;
-            margin-bottom: 20px;
         }
-
         .hero-description {
             font-size: 24px;
-            margin-bottom: 40px;
+            margin-top: 20px;
         }
-
-        .options {
+        .tabs {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding-left: 0;
+        }
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            background: #007BFF;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            border: none;
+            margin: 0 2px;
+            font-weight: bold;
+        }
+        .tab.active {
+            background: white;
+            color: #007BFF;
+            border: 2px solid #007BFF;
+            border-bottom: none;
+        }
+        .content {
+            border: 2px solid #007BFF;
+            border-radius: 0 10px 10px 10px;
+            padding: 2rem;
+            background: white;
+            display: none; /* Initial state hidden */
+            flex-grow: 1;
+        }
+        .card {
+            width: 60%; /* Reduced width by 40% */
+            margin: 0 auto 20px; /* Centers the card and adds margin below */
             text-align: center;
-            margin-top: 40px;
         }
-
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .card-description {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
         .option-button {
             background-color: #007BFF;
             color: #fff;
             border: none;
-            padding: 20px 30px;
-            font-size: 24px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: inline-block;
-            border-radius: 5px;
-            margin-right: 20px;
-        }
-
-        .option-button:last-child {
-            margin-right: 0;
-        }
-
-        .option-button:hover {
-            background-color:#41a73e ;
-        }
-
-        .features {
-            background-color: #fff;
-            padding: 60px 0;
-        }
-
-        .feature {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .feature-icon {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: #007BFF;
-        }
-
-        .feature-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .feature-description {
+            padding: 10px;
+            width: 100%; /* Makes the button stretch to the full width of the card */
             font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .testimonial {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .testimonial-text {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-author {
-            font-size: 16px;
-            font-weight: bold;
-            color: #007BFF;
-        }
-
-        .call-to-action {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            background-color: #0056b3;
-            border: none;
-            padding: 20px 40px;
-            font-size: 24px;
             cursor: pointer;
-            transition: background-color 0.3s;
             border-radius: 5px;
         }
-
-        .cta-button:hover {
-            background-color: #004599;
+        .option-button:hover {
+            background-color: #41a73e;
         }
-
         .footer {
             background-color: #333;
             color: #fff;
             padding: 20px 0;
             text-align: center;
-            position: sticky;
+            position: fixed;
             bottom: 0;
-        }
-
-        .wave-svg {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
             width: 100%;
-            z-index: -1;
         }
-        .hero-wave {
-    position: relative;
-    overflow: hidden;
-}
-
-.image-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.image-container img {
-    max-width: 10%;
-    height: 10%;
-    margin: 0 10px; /* Adjust the margin as needed */
-}
-
+        .image-container {
+            display: flex;
+            justify-content: center; /* Centers all the child items */
+            align-items: center; /* Vertical alignment */
+            margin-bottom: 2%; /* Adjust spacing as needed */
+        }
+        .image-container img {
+            max-width: 10%;
+            height: auto;
+            margin: 2% 10px; /* Adjust the margin as needed */
+        }
     </style>
 </head>
 <body>
@@ -222,32 +142,68 @@
     </nav>
 
     <section class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Welcome to SpineView</h1>
-            <p class="hero-description">Your Ultimate Spine Mesh Repository for Cutting-Edge Research</p>
-            <div class="options">
-                <a href="https://thc.spineview.upf.edu" class="option-button">
-                    <i class="fas fa-spine"></i> Explore Thoracolumbar
-                </a>
-                <a href="https://ivd.spineview.upf.edu" class="option-button">
-                    <i class="fas fa-spine"></i> Discover Intervertebral Disc
-                </a>
+        <h1 class="hero-title">Welcome to Spineview</h1>
+        <p class="hero-description">Your Ultimate Model Repository for Cutting-Edge Spine Research</p>
+    </section>
+
+    <div class="folder">
+        <div class="tabs">
+            <button class="tab active" onclick="openTab(event, 'organ-models')">Organ Models</button>
+            <button class="tab" onclick="openTab(event, 'network-models')">Network Models</button>
+        </div>
+        <div id="organ-models" class="content" style="display: block;">
+            <div class="card">
+                <h2 class="card-title">Thoracolumbar Models</h2>
+                <p class="card-description">Explore our comprehensive repository of thoracolumbar meshes and models for detailed research and analysis.</p>
+                <a href="https://thc.spineview.upf.edu" class="option-button">Explore Thoracolumbar</a>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Intervertebral Disc Models</h2>
+                <p class="card-description">Discover detailed patient-specific models of the intervertebral disc for advanced biomedical research.</p>
+                <a href="https://ivd.spineview.upf.edu" class="option-button">Discover Intervertebral Disc</a>
             </div>
         </div>
-        <div class="image-container">
-            <img src="Insilico-World-Consortium-Ist.jpg" style="margin-bottom: 2%;" alt="Image 1">
-            <img src="image.png" alt="Image 2" style="width: 5%;">
-            <img src="Logo_UPF.jpg" alt="Image 3" style="margin-bottom: 1%;> 
-            <img src="marie-curie-actions.jpg" alt="Image 4" style="width: 5%;">
-            <img src="bsc.png" alt="Image 5" style="width: 5%; margin-bottom: 0.5%;">
+        <div id="network-models" class="content">
+            <div class="card">
+                <h2 class="card-title">Knowledge-Based Models</h2>
+                <p class="card-description">Leverage our knowledge-based models for structured insights into spinal health.</p>
+                <a href="https://kb.spineview.upf.edu" class="option-button">Knowledge Base</a>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Data-Driven Models</h2>
+                <p class="card-description">Explore data-driven approaches to spine modeling for predictive analytics and research.</p>
+                <a href="https://dd.spineview.upf.edu" class="option-button">Data Driven</a>
+            </div>
         </div>
-    </section>
-    
- 
-    
-    <!-- Link to Bootstrap JS and jQuery -->
+    </div>
+    <div class="image-container">
+        <img src="Insilico-World-Consortium-Ist.jpg" style="margin-bottom: 2%;" alt="Image 1">
+        <img src="image.png" alt="Image 2" style="width: 5%;">
+        <img src="Logo_UPF.jpg" alt="Image 3" style="margin-bottom: 1%;"> 
+        <img src="marie-curie-actions.jpg" alt="Image 4" style="width: 5%;">
+        <img src="bsc.png" alt="Image 5" style="width: 5%; margin-bottom: 0.5%;">
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 SpineView. All rights reserved.</p>
+    </ref="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function openTab(evt, tabId) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabId).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </body>
 </html>
